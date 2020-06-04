@@ -53,7 +53,7 @@ function registStorage(){
 	let data = document.getElementById('test').value;
 	data+=7;
 	document.getElementById('test').value = data;
-	db.stores.put({storageKey: 'indexedDTest', storageValue: data});
+	db.storage.put({storageKey: 'indexedDTest', storageValue: data});
 }
 </script>
 </body>
