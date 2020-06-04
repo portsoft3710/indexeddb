@@ -56,6 +56,7 @@ function registStorage(){
 	data+=7;
 	db.storage.put({storageKey: 'indexedDTest', storageValue: data});
 	localStorage.setItem('indexedDTest', data);
+	document.getElementById('test').value = data;
 }
 </script>
 </body>
