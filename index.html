@@ -50,7 +50,7 @@ function bodyOnload(){
 	document.getElementById('test').value = data;*/
 }
 function registStorage(){
-	let data = document.getElementById('test').value;
+	let data = document.getElementById('test').value * 1;
 	data+=7;
 	document.getElementById('test').value = data;
 	db.storage.put({storageKey: 'indexedDTest', storageValue: data});
