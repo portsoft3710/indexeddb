@@ -36,27 +36,24 @@ db.version(1).stores({
 const data = db.storage.toArray().then(function(storage){
 	for(let data of storage){
 		if(data.storageValue){
-			localStorage.setItem(data.storageKey, data.storageValue);
+			//localStorage.setItem(data.storageKey, data.storageValue);
+			document.getElementById('test').value = data.storageValue;
 		}
 	}
 	bodyOnload();
 });
 function bodyOnload(){
-	let data = 0;
+/*	let data = 0;
 	if(localStorage.getItem('indexedDTest')){
 		data = localStorage.getItem('indexedDTest') * 1;
 	}
-	document.getElementById('test').value = data;
+	document.getElementById('test').value = data;*/
 }
 function registStorage(){
-	let data = 0;
-	if(localStorage.getItem('indexedDTest')){
-		data = localStorage.getItem('indexedDTest') * 1;
-	}
+	let data = document.getElementById('test').value;
 	data+=7;
-	db.storage.put({storageKey: 'indexedDTest', storageValue: data});
-	localStorage.setItem('indexedDTest', data);
 	document.getElementById('test').value = data;
+	db.stores.put({storageKey: 'indexedDTest', storageValue: data});
 }
 </script>
 </body>
