@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="content-language" content="ja">
+<link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+<meta name="apple-mobile-web-app-title" content="じゃんけん">
+<title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script>
+window.addEventListener('load', function() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(function(registration) {
+        console.log("serviceWorker registed.");
+      }).catch(function(error) {
+        console.log("serviceWorker error.", error);
+      });
+  }
+});
+</script>
+</head>
+<body>
+<input type="text" id="test">
+<button type="button" onclick="registStorage()">button</button>
+<script src="https://npmcdn.com/dexie@latest/dist/dexie.js"></script>
+<script>
+var db = new Dexie("testDB");
+db.version(1).stores({
+    storage: "storageKey, storageValue"
+});
+const data = db.storage.toArray().then(function(storage){
+	for(let data of storage){
+		if(data.storageValue){
+			localStorage.setItem(data.storageKey, data.storageValue);
+		}
+	}
+	bodyOnload();
+});
+function bodyOnload(){
+	let data = 0;
+	if(localStorage.getItem('indexedDTest')){
+		data = localStorage.getItem('indexedDTest') * 1;
+	}
+	document.getElementById('test').value = data;
+}
+function registStorage(){
+	let data = 0;
+	if(localStorage.getItem('indexedDTest')){
+		data = localStorage.getItem('indexedDTest') * 1;
+	}
+	data+=7;
+	db.storage.put({storageKey: 'indexedDTest', storageValue: data});
+	localStorage.setItem('indexedDTest', data);
+}
+</script>
+</body>
+</html>
