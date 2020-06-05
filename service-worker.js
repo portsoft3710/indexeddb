@@ -24,7 +24,7 @@ self.addEventListener('fetch', function(event) {});
 self.addEventListener('push', function (event) {
     console.log('Received a push message', event);
     var title = "プッシュ通知です！";
-    var body = "プッシュ通知はこのようにして送られるのです" + event.PushMessageData.text();
+    var body = "プッシュ通知はこのようにして送られるのです" + event.data.text();
 
     event.waitUntil(
         self.registration.showNotification(title, {
