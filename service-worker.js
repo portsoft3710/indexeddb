@@ -29,7 +29,6 @@ self.addEventListener('push', function (event) {
     event.waitUntil(
         self.registration.showNotification(title, {
             body: body,
-            icon: '/images/icons/icon-152x152.png',
             tag: 'push-notification-tag'
         })
     );
