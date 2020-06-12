@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
       });
       navigator.serviceWorker.addEventListener('message', event => {
   console.log(event.data.msg);
-  }
+  });
 });
 (function() {
   if ("Notification" in window) {
