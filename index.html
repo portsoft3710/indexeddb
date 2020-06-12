@@ -20,9 +20,10 @@ window.addEventListener('load', function() {
       }).catch(function(error) {
         console.log("serviceWorker error.", error);
       });
-navigator.serviceWorker.addEventListener('message', event => {
-  console.log(event.data.msg, event.data.url);
-});
+    navigator.serviceWorker.addEventListener('message', event => {
+    	console.log(event.data.msg);
+    });
+  }
 });
 (function() {
   if ("Notification" in window) {
