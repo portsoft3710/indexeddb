@@ -25,14 +25,16 @@ self.addEventListener('push', function (event) {
     console.log('Received a push message', event);
     var title = "プッシュ通知です！";
     var body = "プッシュ通知はこのようにして送られるのです" + event.data.text();
-    var db = new Dexie("testDB");
-db.version(1).stores({
-    storage: "storageKey, storageValue"
-});
+    
+    
     event.waitUntil(
         self.registration.showNotification(title, {
             body: body,
             tag: 'push-notification-tag'
-        })
+        });
+        event.ports[0].postMessage({
+            msg: "Hey I just got a push from you!",
+            data: event.data
+        });
     );
 });
