@@ -33,7 +33,7 @@ self.addEventListener('push', function (event) {
             tag: 'push-notification-tag'
         })
     );
-    event.ports[0].postMessage({
+    event.postMessage({
         msg: "Hey I just got a push from you!",
         data: event.data
     });
