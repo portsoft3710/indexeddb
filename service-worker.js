@@ -33,6 +33,22 @@ self.addEventListener('push', function (event) {
             tag: 'push-notification-tag'
         })
     );
-    self.clients.matchAll().then(clients =>
-        clients.forEach(client => client.postMessage({'hage' : hage})));
+event.waitUntil(async function() {
+    // クライアントにアクセスできない場合は、早期に終了します。
+    // 例えば、クロスオリジンの場合。
+    if (!event.clientId) return;
+
+    // クライアントを取得します。
+    const client = await clients.get(event.clientId);
+    // クライアントを取得できない場合は、早期に終了します。
+    // 例えば、閉じている場合。
+    if (!client) return;
+
+    // クライアントにメッセージを送信します。
+    client.postMessage({
+      msg: "私はあなたからフェッチされましたよ！",
+      url: event.request.url
+    });
+   
+  }());    
 });
