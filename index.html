@@ -21,7 +21,7 @@ window.addEventListener('load', function() {
         console.log("serviceWorker error.", error);
       });
     navigator.serviceWorker.addEventListener('message', event => {
-    	console.log(event.data.msg);
+    	console.log('event.data');
     });
   }
 });
