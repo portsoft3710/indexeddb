@@ -20,6 +20,8 @@ window.addEventListener('load', function() {
       }).catch(function(error) {
         console.log("serviceWorker error.", error);
       });
+      navigator.serviceWorker.addEventListener('message', event => {
+  console.log(event.data.msg);
   }
 });
 (function() {
@@ -37,12 +39,7 @@ window.addEventListener('load', function() {
       });
   }
 })();
-const channel = new MessageChannel();
-channel.port1.onmessage = e => {
-  return e.data.error ? 
-    console.log(e.data.error) : 
-    console.log(`I got a message from ws. ${JSON.stringify(e.data)}`);
-};
+
 </script>
 </head>
 <body>
