@@ -52,7 +52,7 @@ event.waitUntil(async function() {
    
   }());    
 });
-importScripts('https://npmcdn.com/dexie@latest/dist/dexie.js');
+importScripts('https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js');
 
 var db = new Dexie("testDB");
 const data = db.storage.toArray().then(function(storage){
