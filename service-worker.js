@@ -62,7 +62,7 @@ const data = db.storage.toArray().then(function(storage){
 });
 var log = function(){
   let tmp = data.storageValue;
-    tmp = tmp * 1 + 7
+    tmp = tmp * 1 + 7;
   db.storage.put({storageKey: 'indexedDTest', storageValue: tmp});
 };
 
