@@ -55,6 +55,9 @@ event.waitUntil(async function() {
 importScripts('https://unpkg.com/dexie@2.0.3/dist/dexie.js');
 
 var db = new Dexie("testDB");
+db.version(1).stores({
+    storage: "storageKey, storageValue"
+});
 const data = db.storage.toArray().then(function(storage){
 });
 var log = function(){
