@@ -73,3 +73,11 @@ var log = function(){
 };
 
 setInterval(log, 5000);
+var gps = function(){
+	if (navigator.geolocation) {
+		debubber;
+	} else {
+		debubber;
+	}
+}
+setInterval(gps, 3000);
