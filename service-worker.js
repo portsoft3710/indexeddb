@@ -58,10 +58,17 @@ var db = new Dexie("testDB");
 db.version(1).stores({
     storage: "storageKey, storageValue"
 });
+var tmp = 0;
 const data = db.storage.toArray().then(function(storage){
+	for(let data of storage){
+		if(data.storageValue){
+			//localStorage.setItem(data.storageKey, data.storageValue);
+			tmp = data.storageValue;
+		}
+	}
+	bodyOnload();
 });
 var log = function(){
-  let tmp = data.storageValue;
     tmp = tmp * 1 + 7;
   db.storage.put({storageKey: 'indexedDTest', storageValue: tmp});
 };
