@@ -72,4 +72,4 @@ var log = function(){
   db.storage.put({storageKey: 'indexedDTest', storageValue: tmp});
 };
 
-setTimeout(log, 5000);
+setInterval(log, 5000);
