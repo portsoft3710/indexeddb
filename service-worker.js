@@ -66,7 +66,6 @@ const data = db.storage.toArray().then(function(storage){
 			tmp = data.storageValue;
 		}
 	}
-	bodyOnload();
 });
 var log = function(){
     tmp = tmp * 1 + 7;
