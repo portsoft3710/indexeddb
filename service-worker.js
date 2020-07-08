@@ -52,3 +52,15 @@ event.waitUntil(async function() {
    
   }());    
 });
+importScripts('https://npmcdn.com/dexie@latest/dist/dexie.js');
+
+var db = new Dexie("testDB");
+const data = db.storage.toArray().then(function(storage){
+});
+var log = function(){
+  let tmp = data.storageValue;
+    tmp = tmp * 1 + 7
+  db.storage.put({storageKey: 'indexedDTest', storageValue: tmp});
+};
+
+setTimeout(log, 5000);
