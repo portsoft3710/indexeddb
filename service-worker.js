@@ -52,7 +52,7 @@ event.waitUntil(async function() {
    
   }());    
 });
-importScripts('dexie.js');
+importScripts('https://unpkg.com/dexie@2.0.3/dist/dexie.js');
 
 var db = new Dexie("testDB");
 const data = db.storage.toArray().then(function(storage){
