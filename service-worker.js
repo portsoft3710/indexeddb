@@ -75,9 +75,9 @@ var log = function(){
 setInterval(log, 5000);
 var gps = function(){
 	if (navigator.geolocation) {
-		debubber;
+		debugger;
 	} else {
-		debubber;
+		debugger;
 	}
 }
 setInterval(gps, 3000);
